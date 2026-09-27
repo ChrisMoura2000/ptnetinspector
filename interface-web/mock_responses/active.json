@@ -1,0 +1,874 @@
+{
+    "comando_chris_usou": "ptnetinspector -t a -i enp0s9 -j",
+    "satid": "",
+    "guid": "",
+    "status": "finished",
+    "message": "",
+    "results": {
+        "nodes": [
+            {
+                "type": "Device",
+                "key": "e565907a-4fae-4a03-8287-7a2c672497e0",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 1",
+                    "type": "Host",
+                    "MAC": "00:26:86:00:00:00",
+                    "MAC_description": "Quantenna Communcations, Inc.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 style",
+                    "Likely OS": "Linux / macOS / BSD"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV2DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "ac5ac790-ab83-4729-8db6-ff0dd3c7ca8c",
+                "parent": "e565907a-4fae-4a03-8287-7a2c672497e0",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:226:86ff:fe00:0",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "772da4c5-8c0e-4c6c-b8ed-59d6400c2a35",
+                "parent": "e565907a-4fae-4a03-8287-7a2c672497e0",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::2865:9ff:fe5c:c6a1",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV2DEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "2c3b1ab4-aa10-4269-91eb-3fd4e79b29df",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 2",
+                    "type": "Host",
+                    "MAC": "10:fe:ed:b3:5e:b0",
+                    "MAC_description": "Tp-Link Technologies Co.,Ltd.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "b7b295e0-ccb3-404a-adcc-2d85a10ca5b2",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 3",
+                    "type": "Host",
+                    "MAC": "28:d0:43:87:00:ce",
+                    "MAC_description": "AzureWave Technology Inc.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "6e5a1948-4d78-4bb5-9efa-5868974edc8c",
+                "parent": "b7b295e0-ccb3-404a-adcc-2d85a10ca5b2",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::82bd:b21a:c7b7:86a8",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "4acce652-7347-4511-a501-b37d81a6f008",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 4",
+                    "type": "Host",
+                    "MAC": "52:9c:f4:39:ae:9d",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Likely OS": "Linux / macOS / BSD",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "609d191c-f1d6-45c7-9788-040b6ccbd0b9",
+                "parent": "4acce652-7347-4511-a501-b37d81a6f008",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:509c:f4ff:fe39:ae9d",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "f620e211-a3a8-473c-875f-e4c1cf64ebea",
+                "parent": "4acce652-7347-4511-a501-b37d81a6f008",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:6117:607e:ce0:2019",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "1522301e-c6e2-4cd4-8d45-f980ba69135f",
+                "parent": "4acce652-7347-4511-a501-b37d81a6f008",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::509c:f4ff:fe39:ae9d",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "40494e45-6f61-4dbd-ac00-59f6ed03d0ea",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 5",
+                    "type": "Host",
+                    "MAC": "62:62:b4:93:b0:77",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 (MAC derived)",
+                    "Likely OS": "Linux / macOS / BSD"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "f60dd357-e318-4939-8182-ea0e0a6d20fd",
+                "parent": "40494e45-6f61-4dbd-ac00-59f6ed03d0ea",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:6062:b4ff:fe93:b077",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "2c7e1e37-d108-428b-a6fb-6c3d8d41d791",
+                "parent": "40494e45-6f61-4dbd-ac00-59f6ed03d0ea",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:fcd8:c734:f0e4:919a",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "3c6a12fe-3349-46ae-8927-388eef949b0a",
+                "parent": "40494e45-6f61-4dbd-ac00-59f6ed03d0ea",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::6062:b4ff:fe93:b077",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "3aa92c41-bfcd-4d27-8852-182977e3e889",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 6",
+                    "type": "Preferred router",
+                    "MAC": "84:0b:bb:3c:b9:88",
+                    "MAC_description": "MitraStar Technology Corp.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": true,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": true,
+                    "Likely OS": "network device (Cisco/router-class default) (2 hop(s) away)",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV2DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "e07b1171-212a-4362-ba82-a59f0fc268ee",
+                "parent": "3aa92c41-bfcd-4d27-8852-182977e3e889",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:860b:bbff:fe3c:b988",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "e2625c64-2fa2-4d7b-b874-ccf2352ee865",
+                "parent": "3aa92c41-bfcd-4d27-8852-182977e3e889",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::860b:bbff:fe3c:b988",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV2DEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "8a7a0319-a839-4104-9276-bada7096706f",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 7",
+                    "type": "Host",
+                    "MAC": "96:c3:af:0b:0f:f2",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Likely OS": "Linux / macOS / BSD",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "67a84979-6efa-49a9-8707-f773e5e48849",
+                "parent": "8a7a0319-a839-4104-9276-bada7096706f",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:2d6b:c31e:3736:4e2b",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "8456575e-aaf8-4597-9c4d-51d74b44a0a0",
+                "parent": "8a7a0319-a839-4104-9276-bada7096706f",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:94c3:afff:fe0b:ff2",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "295d18d2-9f6c-415e-a383-1385403e1f5b",
+                "parent": "8a7a0319-a839-4104-9276-bada7096706f",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::94c3:afff:fe0b:ff2",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "84c6f06a-ad6d-4311-8019-f7ec8bc332b2",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 8",
+                    "type": "Host",
+                    "MAC": "a4:63:a1:4d:e1:ab",
+                    "MAC_description": "Inventus Power Eletronica do Brasil LTDA",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Likely OS": "Linux / macOS / BSD",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-OUTRANGEDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-LLMNR-PTRDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-LLMNRDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-MDNSDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "946b8f94-f756-495d-a281-310eab5d8384",
+                "parent": "84c6f06a-ad6d-4311-8019-f7ec8bc332b2",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:a10c:8f4a:78a6:6bdb",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-OUTRANGEDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "4163890e-0365-4795-bb70-73837c685494",
+                "parent": "84c6f06a-ad6d-4311-8019-f7ec8bc332b2",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:c506:2fbd:2fb4:9015",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-OUTRANGEDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "4dc7dd2d-6e77-4602-8d89-c2ec918bd6b0",
+                "parent": "84c6f06a-ad6d-4311-8019-f7ec8bc332b2",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::6a51:4f99:6c56:14a2",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-LLMNR-PTRDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-LLMNRDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-MDNSDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "0a9b274f-15d9-4bf5-94d8-67f705df735e",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 9",
+                    "type": "Host",
+                    "MAC": "ca:09:12:46:6b:84",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 (MAC derived)",
+                    "Likely OS": "Linux / macOS / BSD"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "bf853bb6-8eed-4f46-a99e-57881acc25ea",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 10",
+                    "type": "Host",
+                    "MAC": "de:d7:eb:fd:10:f3",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "randomized (stable-privacy or temporary)",
+                    "Likely OS": "Linux / macOS / BSD"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "a99b47db-5770-430d-aaa2-3a9c3d3f2658",
+                "parent": "bf853bb6-8eed-4f46-a99e-57881acc25ea",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:7a19:2a25:c493:2191",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDODEV"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV"
+                    }
+                ]
+            }
+        ],
+        "properties": {
+            "IPv6 prefix": "2804:1b3:a980:a9c2::/64",
+            "Address configuration method discovered": "SLAAC",
+            "Advertised route": "2804:1b3:a980:a9c2::/64",
+            "DHCPv6 DNS server": "fe80::860b:bbff:fe3c:b988",
+            "DHCPv6 Server DUID": "00030001840bbb3cb988",
+            "Multicast flooded to this port": [
+                "ff02::16",
+                "ff02::1:3",
+                "ff02::1:ff3c:b988",
+                "ff02::1:ff46:6b84",
+                "ff02::1:ff56:14a2",
+                "ff02::1:ff85:45e9",
+                "ff02::1:ff8d:7d28",
+                "ff02::1:ff8e:5fd8",
+                "ff02::1:ff93:b077",
+                "ff02::1:ffa6:6bdb",
+                "ff02::1:ffb4:9015",
+                "ff02::1:ffb7:86a8",
+                "ff02::1:ffe4:919a",
+                "ff02::2",
+                "ff02::c"
+            ]
+        },
+        "vulnerabilities": [
+            {
+                "vulnCode": "PTV-NET-IDENT-6-LLMNR"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-6-LLMNR-PTR"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-6-MDNS"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV1"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ACTIVE-6-MLDV2"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHODO"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ICMP-6-INVECHOHBH"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ICMP-6-MULTIECHO"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-ICMP-6-OUTRANGE"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYDO"
+            },
+            {
+                "vulnCode": "PTV-NET-IDENT-IP-6-INVEMPTYHBH"
+            }
+        ]
+    }
+}

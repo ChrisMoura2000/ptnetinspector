@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document-TCC</title>
+</head>
+
+<body>
+    <form style="display: none;" action="/scan" , method="post">
+        <select name="inspect_type" id="type_scan">
+            <option value="p">Passivo</option>
+            <option value="a">Active</option>
+            <!-- <option value="a+">Agressive</option> -->
+        </select>
+        <input type="text" placeholder="Interface de rede" name="interface">
+        <button type="submit">Enviar</button>
+    </form>
+    <!-- <form action="/scan_mock" method="post">
+        <select name="inspect_type" id="type_scan">
+            <option value="p">Passivo</option>
+            <option value="a">Active</option>
+            
+        </select>
+        <input type="text" placeholder="Interface de rede" name="interface" value="enp0s9">
+        <button type="submit">Enviar</button>
+    </form> -->
+    <a href="/scan_mock">Scan mock</a>
+</body>
+
+</html>
