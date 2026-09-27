@@ -1,0 +1,258 @@
+{
+  "PTV-NET-IDENT-ICMP-4-BRCASTECHO": {
+    "descricao": "Network allows the delivery of standard broadcast ICMP Echo Request",
+    "correcao": "Configure routers and firewalls to drop directed broadcast ICMP Echo Request packets (e.g., 'no ip directed-broadcast')."
+  },
+  "PTV-NET-IDENT-ICMP-4-BRCASTECHODEV": {
+    "descricao": "Device responds to standard broadcast ICMP Echo Request",
+    "correcao": "Disable responses to ICMP echo requests sent to broadcast addresses on the OS configuration level."
+  },
+  "PTV-NET-IDENT-4-DNSSD": {
+    "descricao": "Network allows devices discovery with IPv4 DNS Service Discovery",
+    "correcao": "Restrict multicast/broadcast DNS-SD traffic to authorized subnets or block port 5353 UDP at network switches."
+  },
+  "PTV-NET-IDENT-4-DNSSDDEV": {
+    "descricao": "Device responds to IPv4 DNS Service Discovery packets",
+    "correcao": "Disable DNS Service Discovery (mDNS/DNS-SD) services on end-user devices if not required for operation."
+  },
+  "PTV-NET-MITM-4-ICMPREDIR": {
+    "descricao": "Network does not block ICMP Redirect messages",
+    "correcao": "Configure routers and firewalls to block and prevent routing of ICMP Redirect messages across network segments."
+  },
+  "PTV-NET-MITM-4-ICMPREDIRDEV": {
+    "descricao": "Device communication can be redirected using ICMP Redirect",
+    "correcao": "Disable acceptance of ICMP Redirects on end-host systems (e.g., set sysctl 'net.ipv4.conf.all.accept_redirects=0')."
+  },
+  "PTV-NET-IDENT-ICMP-4-INVPACKET": {
+    "descricao": "Network allows the delivery of invalid ICMP packets",
+    "correcao": "Deploy network-level intrusion prevention systems (IPS) or firewall rules to drop malformed ICMP packets."
+  },
+  "PTV-NET-IDENT-ICMP-4-INVPACKETDEV": {
+    "descricao": "Device responds to invalid ICMP packets",
+    "correcao": "Ensure network stack and OS kernel patches are up to date to properly drop invalid ICMP packets without responding."
+  },
+  "PTV-NET-IDENT-4-LLMNR": {
+    "descricao": "Network allows the delivery of IPv4 LLMNR A, AAAA or ANY packets",
+    "correcao": "Disable LLMNR via Group Policy / system configuration or block UDP port 5355 at the switch/firewall level."
+  },
+  "PTV-NET-IDENT-4-LLMNRDEV": {
+    "descricao": "Device responds to IPv4 LLMNR A, AAAA or ANY packets",
+    "correcao": "Disable LLMNR on Windows/Linux host settings to prevent local name resolution spoofing."
+  },
+  "PTV-NET-IDENT-4-LLMNR-PTR": {
+    "descricao": "Network allows the delivery of IPv4 LLMNR PTR packets",
+    "correcao": "Block LLMNR PTR queries (UDP 5355) across local network segments using firewall/ACL policies."
+  },
+  "PTV-NET-IDENT-4-LLMNR-PTRDEV": {
+    "descricao": "Device responds to IPv4 LLMNR PTR packets",
+    "correcao": "Disable LLMNR client name resolution services on the host system."
+  },
+  "PTV-NET-IDENT-4-MDNS": {
+    "descricao": "Network allows the delivery of IPv4 MDNS A, AAAA or ANY packets",
+    "correcao": "Filter mDNS traffic (UDP port 5353 / 224.0.0.251) on network switches if local discovery is not needed."
+  },
+  "PTV-NET-IDENT-4-MDNSDEV": {
+    "descricao": "Device responds to IPv4 MDNS A, AAAA or ANY packets",
+    "correcao": "Disable mDNS responder services (e.g., Avahi daemon / Bonjour) on end-user devices."
+  },
+  "PTV-NET-IDENT-4-MDNS-PTR": {
+    "descricao": "Network allows the delivery of IPv4 MDNS PTR packets",
+    "correcao": "Block IPv4 mDNS PTR query propagation across network segments using switch ACLs."
+  },
+  "PTV-NET-IDENT-4-MDNS-PTRDEV": {
+    "descricao": "Device responds to IPv4 MDNS PTR packets",
+    "correcao": "Disable mDNS service or restrict mDNS responses on host systems."
+  },
+  "PTV-NET-IDENT-ICMP-4-MULTIECHO": {
+    "descricao": "Network allows the delivery of standard multicast ICMP Echo Request",
+    "correcao": "Filter or disable ICMP Echo Requests sent to IPv4 multicast addresses at the network interface or host firewall."
+  },
+  "PTV-NET-IDENT-ICMP-4-MULTIECHODEV": {
+    "descricao": "Device responds to standard multicast ICMP Echo Request",
+    "correcao": "Configure host firewalls to ignore ICMP Echo Requests targeted at multicast addresses."
+  },
+  "PTV-NET-IDENT-4-WS": {
+    "descricao": "Network allows devices discovery with IPv4 WS-Discovery",
+    "correcao": "Disable WS-Discovery multicast traffic (UDP port 3702) across switch VLANs."
+  },
+  "PTV-NET-IDENT-4-WSDEV": {
+    "descricao": "Device responds to IPv4 WS-Discovery packets",
+    "correcao": "Disable WSD (Web Services for Devices) provider service in Windows / Linux services."
+  },
+  "PTV-NET-IDENT-6-DNSSD": {
+    "descricao": "Network allows devices discovery with IPv6 DNS Service Discovery",
+    "correcao": "Restrict multicast IPv6 DNS Service Discovery packets at switch and router boundaries."
+  },
+  "PTV-NET-IDENT-6-DNSSDDEV": {
+    "descricao": "Device responds to IPv6 DNS Service Discovery packets",
+    "correcao": "Disable IPv6 DNS Service Discovery daemon/service on client devices."
+  },
+  "PTV-NET-MISCONF-6-RAGUARD": {
+    "descricao": "Network does not have RA guard configured",
+    "correcao": "Enable IPv6 RA Guard on managed switch ports to drop unauthorized Router Advertisement messages."
+  },
+  "PTV-NET-MITM-6-FAKERADNS": {
+    "descricao": "Network allows a client to be forced to use a fraudulent DNS server through a spoofed RA message",
+    "correcao": "Deploy IPv6 RA Guard and DHCPv6 Guard on switch infrastructure to block spoofed RA DNS configurations."
+  },
+  "PTV-NET-MITM-6-FAKERADNSDEV": {
+    "descricao": "Device connects to a fraudulent DNS server through a spoofed RA message",
+    "correcao": "Configure client hosts to ignore RDNSS options from untrusted IPv6 Router Advertisements or enforce static/DHCPv6 DNS."
+  },
+  "PTV-NET-MITM-6-ICMPREDIR": {
+    "descricao": "Network permits ICMPv6 Redirect messages that steer devices through the attacker",
+    "correcao": "Drop ICMPv6 Redirect messages (Type 137) at the network level or switch port security controls."
+  },
+  "PTV-NET-MITM-6-ICMPREDIRDEV": {
+    "descricao": "Device can be steered to forward traffic through the attacker via ICMPv6 Redirect",
+    "correcao": "Disable IPv6 ICMP Redirect processing on hosts (e.g., set sysctl 'net.ipv6.conf.all.accept_redirects=0')."
+  },
+  "PTV-NET-NET-MISCONF-6-FAKERA": {
+    "descricao": "Network allows the delivery of illegitimate RA packets",
+    "correcao": "Enable RA Guard (RFC 6105) on switch access ports to enforce legitimate Router Advertisement sources."
+  },
+  "PTV-NET-NET-MISCONF-6-FAKERADEV": {
+    "descricao": "Device does not ignore the illegitimate RA packets",
+    "correcao": "Enable secure IPv6 configuration settings on endpoints to ignore unauthenticated RA messages."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVECHODO": {
+    "descricao": "Network allows the delivery of invalid Destination Option ICMPv6 Echo Request",
+    "correcao": "Configure network boundaries to drop malformed ICMPv6 packets containing invalid Destination Options headers."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVECHODODEV": {
+    "descricao": "Device responds to invalid Destination Option ICMPv6 Echo Request",
+    "correcao": "Update system kernel to validate IPv6 extension headers and silently drop invalid Destination Option ICMPv6 Echo Requests."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVECHOHBH": {
+    "descricao": "Network allows the delivery of invalid Hop-by-Hop ICMPv6 Echo Request",
+    "correcao": "Drop malformed Hop-by-Hop extension header ICMPv6 packets at the edge firewall or switch ACLs."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVECHOHBHDEV": {
+    "descricao": "Device responds to invalid Hop-by-Hop ICMPv6 Echo Request",
+    "correcao": "Update the host OS network stack to validate Hop-by-Hop headers and reject malformed ICMPv6 Echo Requests."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVPACKET": {
+    "descricao": "Network allows the delivery of invalid ICMPv6 packets",
+    "correcao": "Filter malformed ICMPv6 traffic at network switches and firewalls using ACLs or IPS policies."
+  },
+  "PTV-NET-IDENT-ICMP-6-INVPACKETDEV": {
+    "descricao": "Device responds to invalid ICMPv6 packets",
+    "correcao": "Apply vendor security updates to the OS kernel to correctly handle malformed ICMPv6 packets."
+  },
+  "PTV-NET-IDENT-IP-6-INVEMPTYHBH": {
+    "descricao": "Network allows the delivery of empty packets with invalid Hop-by-Hop Options Header",
+    "correcao": "Enforce strict IPv6 extension header validation on routers and network security appliances."
+  },
+  "PTV-NET-IDENT-IP-6-INVEMPTYHBHDEV": {
+    "descricao": "Device responds to empty packets with invalid Hop-by-Hop Options Header",
+    "correcao": "Update OS network stack patches to discard empty IPv6 packets with invalid Hop-by-Hop options."
+  },
+  "PTV-NET-IDENT-IP-6-INVEMPTYDO": {
+    "descricao": "Network allows the delivery of empty packets with invalid Destination Options Header",
+    "correcao": "Filter invalid IPv6 packets with malformed Destination Options at network ingress boundaries."
+  },
+  "PTV-NET-IDENT-IP-6-INVEMPTYDODEV": {
+    "descricao": "Device responds to empty packets with invalid Destination Options Header",
+    "correcao": "Ensure host operating systems validate IPv6 extension header structures and drop malformed packets."
+  },
+  "PTV-NET-IDENT-6-LLMNR": {
+    "descricao": "Network allows the delivery of IPv6 LLMNR A, AAAA or ANY packets",
+    "correcao": "Block IPv6 LLMNR traffic (UDP port 5355 / multicast ff02::1:3) at network switches."
+  },
+  "PTV-NET-IDENT-6-LLMNRDEV": {
+    "descricao": "Device responds to IPv6 LLMNR A, AAAA or ANY packets",
+    "correcao": "Disable IPv6 LLMNR protocol resolution on host operating systems."
+  },
+  "PTV-NET-IDENT-6-LLMNR-PTR": {
+    "descricao": "Network allows the delivery of IPv6 LLMNR PTR packets",
+    "correcao": "Filter IPv6 LLMNR reverse lookups (PTR queries) on local switches and firewalls."
+  },
+  "PTV-NET-IDENT-6-LLMNR-PTRDEV": {
+    "descricao": "Device responds to IPv6 LLMNR PTR packets",
+    "correcao": "Disable IPv6 LLMNR service on the host device."
+  },
+  "PTV-NET-IDENT-6-MDNS": {
+    "descricao": "Network allows the delivery of IPv6 MDNS A, AAAA or ANY packets",
+    "correcao": "Block multicast IPv6 mDNS packets (UDP port 5353 / ff02::fb) at switch port levels."
+  },
+  "PTV-NET-IDENT-6-MDNSDEV": {
+    "descricao": "Device responds to IPv6 MDNS A, AAAA or ANY packets",
+    "correcao": "Disable IPv6 mDNS services on individual host devices."
+  },
+  "PTV-NET-IDENT-6-MDNS-PTR": {
+    "descricao": "Network allows the delivery of IPv6 MDNS PTR packets",
+    "correcao": "Filter IPv6 mDNS PTR request packets using switch-level access control lists."
+  },
+  "PTV-NET-IDENT-6-MDNS-PTRDEV": {
+    "descricao": "Device responds to IPv6 MDNS PTR packets",
+    "correcao": "Disable IPv6 mDNS service daemons on local endpoints."
+  },
+  "PTV-NET-IDENT-ACTIVE-6-MLDV1": {
+    "descricao": "Network allows the delivery of illegitimate MLDv1 queries",
+    "correcao": "Configure switch-level MLD Snooping and filtering to block unauthorized MLDv1 queries."
+  },
+  "PTV-NET-IDENT-ACTIVE-6-MLDV1DEV": {
+    "descricao": "Device responds to illegitimate MLDv1 queries",
+    "correcao": "Configure host network stack to ignore untrusted or illegitimate MLDv1 queries."
+  },
+  "PTV-NET-NET-MISCONF-6-MLD1GLIP": {
+    "descricao": "Network allows the delivery of MLDv1 messages from a global address",
+    "correcao": "Block MLDv1 messages originating from global unicast IPv6 addresses using switch ACLs."
+  },
+  "PTV-NET-NET-MISCONF-6-MLD1GLIPDEV": {
+    "descricao": "Device responds to MLDv1 messages from a global address",
+    "correcao": "Configure host IPv6 stack to drop MLDv1 messages not originating from link-local addresses."
+  },
+  "PTV-NET-IDENT-ACTIVE-6-MLDV2": {
+    "descricao": "Network allows the delivery of illegitimate MLDv2 queries",
+    "correcao": "Implement MLD Snooping and MLD query inspection on network switches to drop illegitimate MLDv2 queries."
+  },
+  "PTV-NET-IDENT-ACTIVE-6-MLDV2DEV": {
+    "descricao": "Device responds to illegitimate MLDv2 queries",
+    "correcao": "Configure host firewall to filter unauthorized MLDv2 query messages."
+  },
+  "PTV-NET-NET-MISCONF-6-MLD2GLIP": {
+    "descricao": "Network allows the delivery of MLDv2 messages from a global address",
+    "correcao": "Filter MLDv2 traffic originating from global IPv6 addresses at the switch level."
+  },
+  "PTV-NET-NET-MISCONF-6-MLD2GLIPDEV": {
+    "descricao": "Device responds to MLDv2 messages from a global address",
+    "correcao": "Configure endpoints to drop MLDv2 messages sent from global IPv6 source addresses."
+  },
+  "PTV-NET-IDENT-ICMP-6-MULTIECHO": {
+    "descricao": "Network allows the delivery of standard multicast ICMPv6 Echo Request",
+    "correcao": "Restrict or filter IPv6 multicast ICMPv6 Echo Requests using router/firewall access control lists."
+  },
+  "PTV-NET-IDENT-ICMP-6-MULTIECHODEV": {
+    "descricao": "Device responds to standard multicast ICMPv6 Echo Request",
+    "correcao": "Configure host firewall rules (e.g., ip6tables / nftables) to ignore multicast ICMPv6 Echo Requests."
+  },
+  "PTV-NET-IDENT-ICMP-6-OUTRANGE": {
+    "descricao": "Network allows valid or invalid ICMPv6 packets to be delivered from sources outside the scanned local network range",
+    "correcao": "Implement ingress filtering (BCP 38) on network boundaries to block packets originating outside the local subnet range."
+  },
+  "PTV-NET-IDENT-ICMP-6-OUTRANGEDEV": {
+    "descricao": "Device responds to valid or invalid ICMPv6 packets from sources outside the scanned local network range",
+    "correcao": "Configure host firewall to only accept ICMPv6 control messages from expected local network sources."
+  },
+  "PTV-NET-IDENT-6-PREDICT-GLOBIP": {
+    "descricao": "Device uses predictable IPv6 global address",
+    "correcao": "Enable IPv6 Privacy Extensions (RFC 4941 / RFC 8981) to generate randomized global IPv6 addresses."
+  },
+  "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP": {
+    "descricao": "Device uses predictable IPv6 link-local address",
+    "correcao": "Enable RFC 7217 (opaque / stable privacy link-local addresses) instead of EUI-64 MAC-derived addresses."
+  },
+  "PTV-NET-IDENT-6-WS": {
+    "descricao": "Network allows devices discovery with IPv6 WS-Discovery",
+    "correcao": "Filter IPv6 WS-Discovery traffic (UDP 3702 / ff02::c) at the switch port level."
+  },
+  "PTV-NET-IDENT-6-WSDEV": {
+    "descricao": "Device responds to IPv6 WS-Discovery packets",
+    "correcao": "Disable IPv6 Web Services Discovery on host devices."
+  },
+  "PTV-NET-NET-MISCONF-8021X": {
+    "descricao": "Network does not have 802.1x deployed",
+    "correcao": "Deploy 802.1X Network Access Control (NAC) with RADIUS authentication on all managed switch ports."
+  }
+}

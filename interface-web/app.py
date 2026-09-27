@@ -14,13 +14,16 @@ def inspec_passive():
     interface = request.form['interface'] # captura interface escolhida para varredura
     comand_cli = ['ptnetinspector', '-t', inspect_type, '-i', interface, '-j'] # Monta comando para rodar lib pelo terminal
     try:        
-        reponse_cli = subprocess.run(comand_cli, capture_output=True, text=True) # Roda o comando no terminal e retorna um ???
-
-        response_in_json = json.loads(reponse_cli.stdout) # Converte saida de text para json
-        print(response_in_json, "+++++++++++++")
-        return render_template('resume.html', resumo=response_in_json)
-    except: 
-        return render_template('error.html')
+        response_cli = subprocess.run(comand_cli, capture_output=True, text=True) # Roda o comando no terminal e retorna um ???
+        
+        if 'Operation not permitted' in response_cli.stdout: # verifica se o app rodou com permissao de root
+            return render_template('error.html', erro=response_cli.stdout)
+        else:
+            response_in_json = json.loads(response_cli.stdout) # Converte saida de text para json
+            return render_template('resume.html', resumo=response_in_json)
+    except KeyError as err: 
+        print(err)
+        return render_template('error.html', erro=err)
 
 @app.route('/scan_mock')
 def scan_mock():
