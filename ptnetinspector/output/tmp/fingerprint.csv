@@ -1,1 +1,14 @@
 MAC,Hop_limit,OS_guess,IID_type,Reachable_time,Retrans_time,Router_lft
+4a:b9:c0:d1:ab:0c,,,EUI-64 (MAC derived),,,
+60:cf:84:b6:a0:63,,,randomized (stable-privacy or temporary),,,
+60:cf:84:b6:a0:63,128,Windows,,,,
+84:0b:bb:3c:b9:88,,,EUI-64 (MAC derived),,,
+84:0b:bb:3c:b9:88,64,Linux / macOS / BSD,,,,
+84:0b:bb:3c:b9:88,253,network device (Cisco/router-class default) (2 hop(s) away),low-bit (manual or DHCPv6),,,
+84:0b:bb:3c:b9:88,51,,,,,
+84:0b:bb:3c:b9:88,106,,,,,
+84:0b:bb:3c:b9:88,,,EUI-64 (MAC derived),0,0,180
+96:c3:af:0b:0f:f2,,,EUI-64 (MAC derived),,,
+a4:63:a1:4d:e1:ab,128,Windows,,,,
+a4:63:a1:4d:e1:ab,,,randomized (stable-privacy or temporary),,,
+a4:63:a1:4d:e1:ab,64,Linux / macOS / BSD,randomized (stable-privacy or temporary),,,

@@ -7,6 +7,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document-TCC</title>
 </head>
+<style>
+    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE*/
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 50px;
+    }
+
+    /* Estilo do Spinner de Loading */
+    #loading {
+        display: none;
+        /* Escondido por padrão */
+        margin: 20px auto;
+        border: 6px solid #f3f3f3;
+        border-radius: 50%;
+        border-top: 6px solid #3498db;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
 
 <body>
     <form action="/scan" , method="post">
@@ -18,16 +49,14 @@
         <input type="text" placeholder="Interface de rede" name="interface">
         <button type="submit">Enviar</button>
     </form>
-    <!-- <form action="/scan_mock" method="post">
-        <select name="inspect_type" id="type_scan">
-            <option value="p">Passivo</option>
-            <option value="a">Active</option>
-            
-        </select>
-        <input type="text" placeholder="Interface de rede" name="interface" value="enp0s9">
-        <button type="submit">Enviar</button>
-    </form> -->
-    <a href="/scan_mock">Scan mock</a>
+    <div id="loading"></div>
+    <a href="/scan_mock" onclick="addLoading()">Scan mock</a>
 </body>
+<script>
+    function addLoading() {
+        document.getElementById('loading').style.display = 'block'
+    }
+
+</script>
 
 </html>

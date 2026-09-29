@@ -1,1 +1,6 @@
 MAC,Device_Number,Role
+4a:b9:c0:d1:ab:0c,1,Host
+60:cf:84:b6:a0:63,2,Host
+84:0b:bb:3c:b9:88,3,Preferred router
+96:c3:af:0b:0f:f2,4,Host
+a4:63:a1:4d:e1:ab,5,Host

@@ -1,20 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<!-- <style>
+    .card {
+        border: 1px solid black;
+    }
+</style> -->
+
 <body>
     <h1>Resumo do scan</h1>
-    <ul>
-        {%for item in resumo["results"]["nodes"]%}
-        <li>Key: {{item.key}}</li>
-        <li>Tipo: {{item.type}}</li>
-        {%endfor%}
-    </ul>
-    <p>{{ resumo }}</p>
-
     <a href="/">back</a>
+    {%for item in resumo["results"]["nodes"]%}
+    {%if item.type == 'Device'%} <!-- obs esse if filtra por device mas temos o tipo Address tbm -->
+    <div class="card">
+        <h2>Propriedades</h2>
+        <div>
+            <span>Name</span>
+            <span>{{ item.properties.name }}</span>
+        </div>
+        <div>
+            <span>Type</span>
+            <span>{{item.properties.type}}</span>
+        </div>
+        <div>
+            <span>MAC</span>
+            <span>{{item.properties.MAC}}</span>
+        </div>
+        <div>
+            <span>MAC_description</span>
+            <span>{{item.properties.MAC_description}}</span>
+        </div>
+        <div>
+            <span>IPv4_default_GW</span>
+            <span>{{item.properties.IPv4_default_GW}}</span>
+        </div>
+        <div>
+            <span>IPv6_default_GW</span>
+            <span>{{item.properties.IPv6_default_GW}}</span>
+        </div>
+        <div>
+            <span>DHCPv4_server</span>
+            <span>{{item.properties.DHCPv4_server}}</span>
+        </div>
+        <div>
+            <span>DHCPv6_server</span>
+            <span>{{item.properties.DHCPv6_server}}</span>
+        </div>
+        <div>
+            <span>Interface identifier</span>
+            <span>{{item.properties['Interface identifier']}}</span>
+        </div>
+        <div>
+            <span>Likely OS</span>
+            <span>{{item.properties['Likely OS']}}</span>
+        </div>
+
+        <h2>Vulnerabilidades</h2>
+        <div>
+            <ul>
+                {%if item.vulnerabilities | length == 0%}
+                <span>Nenhuma vulnerabilidade encontrada</span>
+                {%else%}
+                {%for vul in item.vulnerabilities%}
+                <li>Description: {{description[vul.vulnCode]}}</li>
+                <li>Code: {{ vul.vulnCode }}</li>
+                {%endfor%}
+                {%endif%}
+            </ul>
+        </div>
+        <hr><br><br>
+        {%endif%}
+        {%endfor%}
+    </div>
 </body>
 </html>

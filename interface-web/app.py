@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import subprocess
 import json
+import time
 
 app = Flask(__name__)
 
@@ -27,10 +28,14 @@ def inspec_passive():
 
 @app.route('/scan_mock')
 def scan_mock():
+    # time.sleep(3) adicionar se quiser loading 
     with open('mock_responses/passive.json', 'r') as data_json:
         data_mock = json.load(data_json)
-    print(data_mock)
-    return render_template('resume.html', resumo=data_mock) 
+
+    with open('auxiliares/code_description_map.json', 'r') as code_desc:
+        description_dict = json.load(code_desc)
+    
+    return render_template('resume.html', resumo=data_mock, description=description_dict) 
 
 if __name__ == '__main__':
     app.run(debug=True) 
