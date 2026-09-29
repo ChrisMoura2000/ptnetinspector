@@ -1,0 +1,239 @@
+{
+    "comando_chris_usou": "ptnetinspector -t p -i enp0s9 -j",
+    "satid": "",
+    "guid": "",
+    "status": "finished",
+    "message": "",
+    "results": {
+        "nodes": [
+            {
+                "type": "Device",
+                "key": "168303ee-3439-4d14-97ca-7be14b4141e1",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 1",
+                    "type": "Host",
+                    "MAC": "10:fe:ed:b3:5e:b0",
+                    "MAC_description": "Tp-Link Technologies Co.,Ltd.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "77d56748-5890-4783-8585-c937e9c5259d",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 2",
+                    "type": "Preferred router",
+                    "MAC": "84:0b:bb:3c:b9:88",
+                    "MAC_description": "MitraStar Technology Corp.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 (MAC derived)",
+                    "Likely OS": "Linux / macOS / BSD"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "329dbeca-9893-4078-bec0-790bc1f2db6c",
+                "parent": "77d56748-5890-4783-8585-c937e9c5259d",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::860b:bbff:fe3c:b988",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "1d3f4f85-afc7-4ce8-827a-4f75f49e7005",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 3",
+                    "type": "Host",
+                    "MAC": "96:c3:af:0b:0f:f2",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "56334619-2bef-4419-8961-74a3a69ae714",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 4",
+                    "type": "Host",
+                    "MAC": "a4:63:a1:4d:e1:ab",
+                    "MAC_description": "Inventus Power Eletronica do Brasil LTDA",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Likely OS": "Windows",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Address",
+                "key": "06b8b474-5917-46f3-9d97-a0ed59828336",
+                "parent": "56334619-2bef-4419-8961-74a3a69ae714",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:c506:2fbd:2fb4:9015",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "c17fdf55-9237-4f07-9d5a-68cb6e81ca3b",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 5",
+                    "type": "Host",
+                    "MAC": "ca:09:12:46:6b:84",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 (MAC derived)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "9d7068d0-397c-4d92-848d-5e392bf8b884",
+                "parent": "c17fdf55-9237-4f07-9d5a-68cb6e81ca3b",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::c809:12ff:fe46:6b84",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Device",
+                "key": "4d3fa07d-a6c0-4b7f-9bf9-aed024e0a5b7",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 6",
+                    "type": "Host",
+                    "MAC": "de:d7:eb:fd:10:f3",
+                    "MAC_description": "Unknown Vendor",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Likely OS": "Linux / macOS / BSD",
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    },
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "ed154295-9d74-4bce-9ea6-510e8398f3c4",
+                "parent": "4d3fa07d-a6c0-4b7f-9bf9-aed024e0a5b7",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:7a19:2a25:c493:2191",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Address",
+                "key": "11a26129-a145-4f1c-9212-731f7a754f62",
+                "parent": "4d3fa07d-a6c0-4b7f-9bf9-aed024e0a5b7",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a980:a9c2:dcd7:ebff:fefd:10f3",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-GLOBIP"
+                    }
+                ]
+            },
+            {
+                "type": "Address",
+                "key": "85b16a95-31ac-4bce-ab04-7d4a4a580196",
+                "parent": "4d3fa07d-a6c0-4b7f-9bf9-aed024e0a5b7",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::dcd7:ebff:fefd:10f3",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": [
+                    {
+                        "vulnCode": "PTV-NET-IDENT-6-PREDICT-LINKLOCALIP"
+                    }
+                ]
+            }
+        ],
+        "properties": {
+            "IPv6 prefix": "2804:1b3:a980:a9c2::/64",
+            "Address configuration method discovered": "SLAAC",
+            "Advertised route": "2804:1b3:a980:a9c2::/64",
+            "Multicast flooded to this port": [
+                "ff02::16",
+                "ff02::1:ff36:e9b6",
+                "ff02::1:ff3c:b988",
+                "ff02::1:ff8e:5fd8",
+                "ff02::1:ff93:2191",
+                "ff02::1:fffd:10f3",
+                "ff02::1:fffe:b26e",
+                "ff02::2"
+            ]
+        },
+        "vulnerabilities": []
+    }
+}

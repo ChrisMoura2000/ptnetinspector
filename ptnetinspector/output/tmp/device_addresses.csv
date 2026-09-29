@@ -1,0 +1,7 @@
+Device,MAC,IP,IP_version,Vendor,Role,Hostname
+1,4a:b9:c0:d1:ab:0c,fe80::48b9:c0ff:fed1:ab0c,6,Unknown Vendor,Host,
+2,60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,6,ASUSTek COMPUTER INC.,Host,
+3,84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,6,MitraStar Technology Corp.,Preferred router,
+4,96:c3:af:0b:0f:f2,fe80::94c3:afff:fe0b:ff2,6,Unknown Vendor,Host,
+5,a4:63:a1:4d:e1:ab,2804:1b3:a981:28d0:b967:551f:11ad:ffd3,6,Inventus Power Eletronica do Brasil LTDA,Host,
+5,a4:63:a1:4d:e1:ab,fe80::6a51:4f99:6c56:14a2,6,Inventus Power Eletronica do Brasil LTDA,Host,
