@@ -1,0 +1,91 @@
+{
+    "satid": "",
+    "guid": "",
+    "status": "finished",
+    "message": "",
+    "results": {
+        "nodes": [
+            {
+                "type": "Device",
+                "key": "f8c8cb11-76d8-4665-83a2-c590bf3afc08",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 1",
+                    "type": "Host",
+                    "MAC": "84:0b:bb:3c:b9:88",
+                    "MAC_description": "MitraStar Technology Corp.",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "EUI-64 (MAC derived)",
+                    "Likely OS": "network device (Cisco/router-class default) (2 hop(s) away)"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Address",
+                "key": "b6b499f3-9fc7-4cf7-ab02-ce2a304ea7df",
+                "parent": "f8c8cb11-76d8-4665-83a2-c590bf3afc08",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::860b:bbff:fe3c:b988",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Device",
+                "key": "0c0726f7-a60a-4230-b608-0c8fe70428b0",
+                "parent": null,
+                "parentType": "Site",
+                "properties": {
+                    "name": "Device 2",
+                    "type": "Host",
+                    "MAC": "a4:63:a1:4d:e1:ab",
+                    "MAC_description": "Inventus Power Eletronica do Brasil LTDA",
+                    "IPv4_default_GW": false,
+                    "IPv6_default_GW": false,
+                    "DHCPv4_server": false,
+                    "DHCPv6_server": false,
+                    "Interface identifier": "randomized (stable-privacy or temporary)"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Address",
+                "key": "6f5fc58f-9ba7-492d-8f94-024638fa6a73",
+                "parent": "0c0726f7-a60a-4230-b608-0c8fe70428b0",
+                "parentType": null,
+                "properties": {
+                    "IP": "2804:1b3:a981:389e:84d7:49ec:9a2c:d1f7",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": []
+            },
+            {
+                "type": "Address",
+                "key": "62756213-fcaf-4c7a-973b-c765c90c2290",
+                "parent": "0c0726f7-a60a-4230-b608-0c8fe70428b0",
+                "parentType": null,
+                "properties": {
+                    "IP": "fe80::6a51:4f99:6c56:14a2",
+                    "protocol": "IPv6",
+                    "description": "normal address"
+                },
+                "vulnerabilities": []
+            }
+        ],
+        "properties": {
+            "Multicast flooded to this port": "ff02::1:ff43:b54e"
+        },
+        "vulnerabilities": [
+            {
+                "vulnCode": "PTV-NET-NET-MISCONF-8021X"
+            }
+        ]
+    }
+}

@@ -1,19 +1,1 @@
 MAC,IP,protocol,mulip
-4a:b9:c0:d1:ab:0c,fe80::48b9:c0ff:fed1:ab0c,Report v1,ff02::fb
-4a:b9:c0:d1:ab:0c,fe80::48b9:c0ff:fed1:ab0c,Report v1,ff02::1:ffd1:ab0c
-4a:b9:c0:d1:ab:0c,fe80::48b9:c0ff:fed1:ab0c,Report v1,ff02::1:ff28:ad81
-60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,Report v1,ff02::c
-60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,Report v1,ff02::1:3
-60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,Report v1,ff02::1:ffa1:2f47
-60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,Report v1,ff02::1:ffbd:713a
-60:cf:84:b6:a0:63,fe80::caa2:3855:a3fe:b26e,Report v1,ff02::1:fffe:b26e
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Report v1,ff02::1:2
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Report v1,ff02::1:ff00:0
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Report v1,ff05::1:3
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Report v1,ff02::1:ff3c:b988
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Report v1,ff02::2
-96:c3:af:0b:0f:f2,fe80::94c3:afff:fe0b:ff2,Report v1,ff02::1:ff0b:ff2
-96:c3:af:0b:0f:f2,fe80::94c3:afff:fe0b:ff2,Report v1,ff02::fb
-a4:63:a1:4d:e1:ab,fe80::6a51:4f99:6c56:14a2,Report v1,ff02::1:ff56:14a2
-a4:63:a1:4d:e1:ab,fe80::6a51:4f99:6c56:14a2,Report v1,ff02::1:ffad:ffd3
-a4:63:a1:4d:e1:ab,fe80::6a51:4f99:6c56:14a2,Report v1,ff02::1:ffe6:38b7

@@ -1,3 +1,2 @@
 MAC,IP,Protocol,Group,QRV,QQIC,Max_response
-84:0b:bb:3c:b9:88,192.168.15.1,IGMPv3,0.0.0.0,4,11,100
 84:0b:bb:3c:b9:88,192.168.15.1,IGMPv2,0.0.0.0,,,90

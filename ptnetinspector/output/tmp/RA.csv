@@ -1,2 +1,2 @@
 MAC,IP,M,O,H,A,L,Preference,Router_lft,Reachable_time,Retrans_time,DNS,MTU,Prefix,Valid_lft,Preferred_lft
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,No,Yes,No,Yes,Yes,High,180,0,0,,1492,2804:1b3:a981:28d0::/64,43200,43200
+84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,No,Yes,No,Yes,Yes,High,180,0,0,,1492,2804:1b3:a981:389e::/64,43200,43200

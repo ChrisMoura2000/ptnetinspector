@@ -2,7 +2,7 @@
     "satid": "",
     "guid": "",
     "status": "error",
-    "message": "Invalid inserted interface: enp0s8.",
+    "message": "Invalid choice.",
     "results": {
         "nodes": [],
         "properties": {},

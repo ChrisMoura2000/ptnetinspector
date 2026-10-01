@@ -26,16 +26,37 @@ def inspec_passive():
         print(err)
         return render_template('error.html', erro=err)
 
+    
+@app.route('/scanreal', methods=['post'])
+def scan_real():
+    data_request = request.get_json()
+     
+    comand_cli = ['ptnetinspector', '-t', data_request['inspect_type'], '-i', data_request['interface_selcted'], '-j']
+    print(comand_cli)
+    try:        
+        response_cli = subprocess.run(comand_cli, capture_output=True, text=True)
+
+        if 'Operation not permitted' in response_cli.stdout:
+            return {'erro': response_cli.stdout}
+        else:
+            response_in_json = json.loads(response_cli.stdout)
+            print(response_in_json)
+            return response_in_json
+    except KeyError as err: 
+        print(err)
+        return {'erro': err}
+
+
 @app.route('/scan_mock')
 def scan_mock():
-    # time.sleep(3) adicionar se quiser loading 
+    time.sleep(3) # adicionar se quiser loading 
     with open('mock_responses/passive.json', 'r') as data_json:
         data_mock = json.load(data_json)
 
-    with open('auxiliares/code_description_map.json', 'r') as code_desc:
-        description_dict = json.load(code_desc)
+    # with open('auxiliares/code_description_map.json', 'r') as code_desc:
+    #     description_dict = json.load(code_desc)
     
-    return render_template('resume.html', resumo=data_mock, description=description_dict) 
+    return data_mock 
 
 if __name__ == '__main__':
     app.run(debug=True) 

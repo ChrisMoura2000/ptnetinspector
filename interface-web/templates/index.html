@@ -40,21 +40,70 @@
 </style>
 
 <body>
-    <form action="/scan" , method="post">
-        <select name="inspect_type" id="type_scan">
-            <option value="p">Passivo</option>
-            <option value="a">Active</option>
-            <!-- <option value="a+">Agressive</option> -->
-        </select>
-        <input type="text" placeholder="Interface de rede" name="interface">
-        <button type="submit">Enviar</button>
-    </form>
+    <h1>Selecione o tipo de scan</h1>
+    <label>
+        <input type="radio" name="option" value="p">Passivo</input>
+    </label>
+    <label>
+        <input type="radio" name="option" value="a">Active</input>
+    </label>
+    <label>
+        <input type="radio" name="option" value="a+">Agressive</input>
+    </label>
+    <label>
+        <input type="radio" name="option" value="802.1x">802.1x</input>
+    </label>
+    <input type="text" placeholder="Interface de rede" id="interface">
+    <button id="submit">Enviar</button>
+
     <div id="loading"></div>
-    <a href="/scan_mock" onclick="addLoading()">Scan mock</a>
+    <div id="errorSpace"></div>
+    <div id="tabela"></div>
+
 </body>
 <script>
-    function addLoading() {
-        document.getElementById('loading').style.display = 'block'
+
+    btn = document.getElementById("submit")
+    btn.addEventListener('click', async () => {
+        isLoading(true)
+
+        inspect_type = document.querySelector('input[name="option"]:checked').value
+        interface_selcted = document.getElementById("interface").value
+        console.log(inspect_type, interface_selcted);
+        
+        bodyData = {'inspect_type':inspect_type, 'interface_selcted': interface_selcted}
+        tableDiv = document.getElementById('tabela')
+
+        try {
+            requestAPI = await fetch('/scanreal', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            })
+            response = await requestAPI.json()
+
+            console.log(response);
+
+            isLoading(false)
+
+            tableDiv.innerHTML = 'Deu bom'
+        } catch (error) {
+            console.log(error);
+            isLoading(false)
+
+            divError = document.getElementById('errorSpace')
+            divError.innerHTML = "<h1>Erro</h1>"
+        }
+
+    })
+
+    function isLoading(option) {
+        loadingDiv = document.getElementById('loading')
+        if (option) {
+            loadingDiv.style.display = 'block'
+        } else {
+            loadingDiv.style.display = 'none'
+        }
     }
 
 </script>

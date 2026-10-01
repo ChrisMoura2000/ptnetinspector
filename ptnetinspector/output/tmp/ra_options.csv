@@ -1,5 +1,5 @@
 MAC,IP,Option,Value,Lifetime,Flags
 84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,MTU,1492,,
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Prefix Information,2804:1b3:a981:28d0::/64,43200,A=1 L=1
-84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Route Information,2804:1b3:a981:28d0::/64,180,High
+84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Prefix Information,2804:1b3:a981:389e::/64,43200,A=1 L=1
+84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Route Information,2804:1b3:a981:389e::/64,180,High
 84:0b:bb:3c:b9:88,fe80::860b:bbff:fe3c:b988,Advertisement Interval,40000,,
