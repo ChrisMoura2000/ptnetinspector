@@ -15,6 +15,11 @@
         padding-top: 50px;
     }
 
+    select {
+        font-family: inherit;
+        font-size: inherit;
+    }
+
     /* Estilo do Spinner de Loading */
     #loading {
         display: none;
@@ -53,7 +58,15 @@
     <label>
         <input type="radio" name="option" value="802.1x">802.1x</input>
     </label>
-    <input type="text" placeholder="Interface de rede" id="interface">
+    <select id="interface" name="interface">
+        <option value="">Selecione a Interface de Rede</option>
+        {% for interface in interfaces %}
+        # Aparentemente, não dá para quebrar a linha em um texto dentro do option. Maioria dos fóruns recomendam usar o title. 
+        <option value="{{ interface.name }}" title="IPv4: {{ interface.ipv4 or 'N/A' }} | IPv6: {{ interface.ipv6 or 'N/A' }}">
+            {{ interface.idif }}. {{ interface.name }}
+        </option>
+        {% endfor %}
+    </select>
     <button id="submit">Enviar</button>
 
     <div id="loading"></div>

@@ -2,12 +2,14 @@ from flask import Flask, render_template, request, jsonify
 import subprocess
 import json
 import time
+from features.list_interfaces import list_network_interfaces
 
 app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
+    interfaces = list_network_interfaces()
+    return render_template('index.html', interfaces=interfaces)
 
 @app.route('/scan', methods=['post'])
 def inspec_passive():
