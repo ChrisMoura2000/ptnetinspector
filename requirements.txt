@@ -14,7 +14,6 @@ netifaces==0.11.0
 numpy==2.5.3
 pandas==3.0.6
 ptlibs==1.0.71
--e git+ssh://git@github.com/ChrisMoura2000/ptnetinspector.git@dd479f45e6d12f5906d8e9e65717e8f27bb4b302#egg=ptnetinspector
 python-dateutil==2.9.0.post0
 requests==2.34.2
 requests-toolbelt==1.0.0
