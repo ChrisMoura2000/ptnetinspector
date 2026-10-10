@@ -6,6 +6,10 @@
     "results": {
         "nodes": [],
         "properties": {},
-        "vulnerabilities": []
+        "vulnerabilities": [
+            {
+                "vulnCode": "PTV-NET-NET-MISCONF-8021X"
+            }
+        ]
     }
 }

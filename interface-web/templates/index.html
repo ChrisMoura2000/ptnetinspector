@@ -69,60 +69,43 @@
     </div>
 
     <div id="errorSpace"></div>
-    <div id="tabela"></div>
+    <div id="tabela" style="display:none"></div>
 
 </body>
 <script>
 
-    function formatToHTML(item) {
-        let result = ''
-        if (item.type == 'Device') {
-            result = `<div class="card">
-        <h2>Propriedades</h2>
-        <div>
-            <span>Name</span>
-            <span>${item.properties.name}</span>
-        </div>
-        <div>
-            <span>Type</span>
-            <span>${item.properties.type}</span>
-        </div>
-        <div>
-            <span>MAC</span>
-            <span>${item.properties.MAC}</span>
-        </div>
-        <div>
-            <span>MAC_description</span>
-            <span>${item.properties.MAC_description}</span>
-        </div>
-        <div>
-            <span>IPv4_default_GW</span>
-            <span>${item.properties.IPv4_default_GW}</span>
-        </div>
-        <div>
-            <span>IPv6_default_GW</span>
-            <span>${item.properties.IPv6_default_GW}</span>
-        </div>
-        <div>
-            <span>DHCPv4_server</span>
-            <span>${item.properties.DHCPv4_server}</span>
-        </div>
-        <div>
-            <span>DHCPv6_server</span>
-            <span>${item.properties.DHCPv6_server}</span>
-        </div>
-        <div>
-            <span>Interface identifier</span>
-            <span>${item.properties['Interface identifier']}</span>
-        </div>
-        <div>
-            <span>Likely OS</span>
-            <span>${item.properties['Likely OS']}</span>
-        </div>`
-        } else {
-            result = `<h3>${item.type}</h3>`
+    function formatToHTML(item, desc) {
+        let resultHTML = `<h2>${item.type}</h2>`
+        let vulnerabilitiesHTML = ''
+        let properties_key = Object.keys(item.properties)
+        let properties_values = Object.values(item.properties)
+
+        for (let i = 0; i < properties_key.length; i++) {
+            vulnerabilitiesHTML = '<h3>Vulnerabilidades</h3>'
+            resultHTML += `            
+            <div>
+                <span>${properties_key[i]}: </span>
+                <span>${properties_values[i]}</span>
+            </div>
+                `
+            if (item.vulnerabilities.length > 0) {
+                for (let iVuln = 0; iVuln < item.vulnerabilities.length; iVuln++) {
+                    code_vulnerabilitie = item.vulnerabilities[iVuln]["vulnCode"]
+                    vulnerabilitiesHTML += `
+                <div>
+                    <span>Code: ${code_vulnerabilitie}</span>
+                    <br>
+                    <span>Descricao: ${desc[code_vulnerabilitie]}</span>
+                    </div>
+                `
+                }
+
+            } else {
+                vulnerabilitiesHTML = "<h3>Vulnerabilidade não encontrada</h3>"
+            }
         }
-        return result
+
+        return resultHTML + vulnerabilitiesHTML
     }
 
     function isLoading(option) {
@@ -154,7 +137,9 @@
             })
 
             response = await requestAPI.json()
-            nodes = response.results.nodes
+
+            nodes = response.scan_returned.results.nodes
+            descriptions = response.description_dict
 
             if ('erro' in response) {
                 alert(response.erro)
@@ -162,10 +147,17 @@
 
             isLoading(false)
 
-            for (let count = 0; count < nodes.length; count++) {
-                htmlContent = formatToHTML(nodes[count])
-                tableDiv.innerHTML += htmlContent
+            for (let i = 0; i < nodes.length; i++) {
+                htmlContent = formatToHTML(nodes[i], descriptions)
+                tableDiv.innerHTML += `
+                    <div class="card">
+                        ${htmlContent}
+                    </div>
+
+                `
             }
+
+            tableDiv.style.display = "block"
 
         } catch (error) {
             console.log('dentro do catch, erro: ', error);

@@ -1,1 +1,2 @@
 time,MAC,packet
+2026-10-10 13:15:59.425838,08:00:27:fd:1c:d1,###[ Ethernet ]### dst = 01:80:c2:00:00:03 src = 08:00:27:fd:1c:d1 type = EAPOL ###[ EAPOL ]### version = 802.1X-2001 type = EAPOL-Start len = 0
