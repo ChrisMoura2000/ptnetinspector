@@ -8,11 +8,19 @@
     <title>Document-TCC</title>
 </head>
 <style>
-    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE*/
+    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE #loading*/
     body {
         font-family: Arial, sans-serif;
+    }
+
+    .form {
         text-align: center;
-        padding-top: 50px;
+        margin-top: 5%;
+    }
+
+    .card {
+        text-align: left;
+        border: 1px solid rgba(0, 0, 0, 0.43)
     }
 
     /* Estilo do Spinner de Loading */
@@ -40,62 +48,82 @@
 </style>
 
 <body>
-    <h1>Selecione o tipo de scan</h1>
-    <label>
-        <input type="radio" name="option" value="p">Passivo</input>
-    </label>
-    <label>
-        <input type="radio" name="option" value="a">Active</input>
-    </label>
-    <label>
-        <input type="radio" name="option" value="a+">Agressive</input>
-    </label>
-    <label>
-        <input type="radio" name="option" value="802.1x">802.1x</input>
-    </label>
-    <input type="text" placeholder="Interface de rede" id="interface">
-    <button id="submit">Enviar</button>
+    <div class="form">
+        <h1>Selecione o tipo de scan</h1>
+        <label>
+            <input type="radio" name="option" value="p">Passivo</input>
+        </label>
+        <label>
+            <input type="radio" name="option" value="a">Active</input>
+        </label>
+        <label>
+            <input type="radio" name="option" value="a+">Agressive</input>
+        </label>
+        <label>
+            <input type="radio" name="option" value="802.1x">802.1x</input>
+        </label>
+        <input type="text" placeholder="Interface de rede" id="interface">
+        <button id="submit">Enviar</button>
 
-    <div id="loading"></div>
+        <div id="loading"></div>
+    </div>
+
     <div id="errorSpace"></div>
     <div id="tabela"></div>
 
 </body>
 <script>
 
-    btn = document.getElementById("submit")
-    btn.addEventListener('click', async () => {
-        isLoading(true)
-
-        inspect_type = document.querySelector('input[name="option"]:checked').value
-        interface_selcted = document.getElementById("interface").value
-        console.log(inspect_type, interface_selcted);
-        
-        bodyData = {'inspect_type':inspect_type, 'interface_selcted': interface_selcted}
-        tableDiv = document.getElementById('tabela')
-
-        try {
-            requestAPI = await fetch('/scanreal', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(bodyData)
-            })
-            response = await requestAPI.json()
-
-            console.log(response);
-
-            isLoading(false)
-
-            tableDiv.innerHTML = 'Deu bom'
-        } catch (error) {
-            console.log(error);
-            isLoading(false)
-
-            divError = document.getElementById('errorSpace')
-            divError.innerHTML = "<h1>Erro</h1>"
+    function formatToHTML(item) {
+        let result = ''
+        if (item.type == 'Device') {
+            result = `<div class="card">
+        <h2>Propriedades</h2>
+        <div>
+            <span>Name</span>
+            <span>${item.properties.name}</span>
+        </div>
+        <div>
+            <span>Type</span>
+            <span>${item.properties.type}</span>
+        </div>
+        <div>
+            <span>MAC</span>
+            <span>${item.properties.MAC}</span>
+        </div>
+        <div>
+            <span>MAC_description</span>
+            <span>${item.properties.MAC_description}</span>
+        </div>
+        <div>
+            <span>IPv4_default_GW</span>
+            <span>${item.properties.IPv4_default_GW}</span>
+        </div>
+        <div>
+            <span>IPv6_default_GW</span>
+            <span>${item.properties.IPv6_default_GW}</span>
+        </div>
+        <div>
+            <span>DHCPv4_server</span>
+            <span>${item.properties.DHCPv4_server}</span>
+        </div>
+        <div>
+            <span>DHCPv6_server</span>
+            <span>${item.properties.DHCPv6_server}</span>
+        </div>
+        <div>
+            <span>Interface identifier</span>
+            <span>${item.properties['Interface identifier']}</span>
+        </div>
+        <div>
+            <span>Likely OS</span>
+            <span>${item.properties['Likely OS']}</span>
+        </div>`
+        } else {
+            result = `<h3>${item.type}</h3>`
         }
-
-    })
+        return result
+    }
 
     function isLoading(option) {
         loadingDiv = document.getElementById('loading')
@@ -105,6 +133,49 @@
             loadingDiv.style.display = 'none'
         }
     }
+
+    btn = document.getElementById("submit")
+    btn.addEventListener('click', async () => {
+        isLoading(true)
+
+        inspect_type = document.querySelector('input[name="option"]:checked').value
+        interface_selcted = document.getElementById("interface").value
+
+        bodyData = {'inspect_type': inspect_type, 'interface_selcted': interface_selcted}
+        tableDiv = document.getElementById('tabela')
+
+        let mock_API = '/scan_mock'
+        let real_API = '/scanreal'
+        try {
+            requestAPI = await fetch(real_API, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            })
+
+            response = await requestAPI.json()
+            nodes = response.results.nodes
+
+            if ('erro' in response) {
+                alert(response.erro)
+            }
+
+            isLoading(false)
+
+            for (let count = 0; count < nodes.length; count++) {
+                htmlContent = formatToHTML(nodes[count])
+                tableDiv.innerHTML += htmlContent
+            }
+
+        } catch (error) {
+            console.log('dentro do catch, erro: ', error);
+            isLoading(false)
+
+            divError = document.getElementById('errorSpace')
+            divError.innerHTML = "<h1>Erro</h1>"
+        }
+
+    })
 
 </script>
 

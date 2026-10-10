@@ -47,15 +47,14 @@ def scan_real():
         return {'erro': err}
 
 
-@app.route('/scan_mock')
+@app.route('/scan_mock', methods=['post'])
 def scan_mock():
-    time.sleep(3) # adicionar se quiser loading 
+    time.sleep(1) # adicionar se quiser loading 
     with open('mock_responses/passive.json', 'r') as data_json:
         data_mock = json.load(data_json)
 
     # with open('auxiliares/code_description_map.json', 'r') as code_desc:
     #     description_dict = json.load(code_desc)
-    
     return data_mock 
 
 if __name__ == '__main__':
