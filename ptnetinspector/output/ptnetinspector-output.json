@@ -2,7 +2,7 @@
     "satid": "",
     "guid": "",
     "status": "error",
-    "message": "Invalid choice.",
+    "message": "Invalid inserted interface: enp.",
     "results": {
         "nodes": [],
         "properties": {},

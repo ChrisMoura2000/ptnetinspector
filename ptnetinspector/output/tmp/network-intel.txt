@@ -1,26 +1,7 @@
 ptnetinspector network intelligence
 
-Router Advertisement options
-Router                     Option                  Value                    Lifetime    Flags
--------------------------  ----------------------  -----------------------  ----------  -------
-fe80::860b:bbff:fe3c:b988  Route Information       2804:1b3:a981:389e::/64  180         High
-fe80::860b:bbff:fe3c:b988  Advertisement Interval  40000
-
 Multicast querier
 MAC                IP            Protocol    QRV    QQIC
 -----------------  ------------  ----------  -----  ------
 84:0b:bb:3c:b9:88  192.168.15.1  IGMPv2
-
-Passive fingerprints (heuristic, likely not certain)
-MAC                Hop limit    Likely OS                                                                         Interface identifier
------------------  -----------  --------------------------------------------------------------------------------  ------------------------------------------------
-84:0b:bb:3c:b9:88  64, 54, 253  Linux / macOS / BSD, network device (Cisco/router-class default) (2 hop(s) away)  EUI-64 (MAC derived), low-bit (manual or DHCPv6)
-8a:92:ae:88:36:29                                                                                                 EUI-64 (MAC derived)
-a4:63:a1:4d:e1:ab  128          Windows
-
-Multicast received without joining (L2 flooding evidence, not a verdict)
-Group              Version    Senders    Sending MACs
------------------  ---------  ---------  ------------------------------------
-239.255.255.250    IPv4       2          10:fe:ed:b3:5e:b0, a4:63:a1:4d:e1:ab
-ff02::1:ff13:1716  IPv6       1          84:0b:bb:3c:b9:88
 

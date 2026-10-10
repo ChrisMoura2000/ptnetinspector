@@ -8,11 +8,19 @@
     <title>Document-TCC</title>
 </head>
 <style>
-    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE*/
+    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE #loading*/
     body {
         font-family: Arial, sans-serif;
+    }
+
+    .form {
         text-align: center;
-        padding-top: 50px;
+        margin-top: 5%;
+    }
+
+    .card {
+        text-align: left;
+        border: 1px solid rgba(0, 0, 0, 0.43)
     }
 
     select {
@@ -71,44 +79,44 @@
 
     <div id="loading"></div>
     <div id="errorSpace"></div>
-    <div id="tabela"></div>
+    <div id="tabela" style="display:none"></div>
 
 </body>
 <script>
 
-    btn = document.getElementById("submit")
-    btn.addEventListener('click', async () => {
-        isLoading(true)
+    function formatToHTML(item, desc) {
+        let resultHTML = `<h2>${item.type}</h2>`
+        let vulnerabilitiesHTML = ''
+        let properties_key = Object.keys(item.properties)
+        let properties_values = Object.values(item.properties)
 
-        inspect_type = document.querySelector('input[name="option"]:checked').value
-        interface_selcted = document.getElementById("interface").value
-        console.log(inspect_type, interface_selcted);
-        
-        bodyData = {'inspect_type':inspect_type, 'interface_selcted': interface_selcted}
-        tableDiv = document.getElementById('tabela')
+        for (let i = 0; i < properties_key.length; i++) {
+            vulnerabilitiesHTML = '<h3>Vulnerabilidades</h3>'
+            resultHTML += `            
+            <div>
+                <span>${properties_key[i]}: </span>
+                <span>${properties_values[i]}</span>
+            </div>
+                `
+            if (item.vulnerabilities.length > 0) {
+                for (let iVuln = 0; iVuln < item.vulnerabilities.length; iVuln++) {
+                    code_vulnerabilitie = item.vulnerabilities[iVuln]["vulnCode"]
+                    vulnerabilitiesHTML += `
+                <div>
+                    <span>Code: ${code_vulnerabilitie}</span>
+                    <br>
+                    <span>Descricao: ${desc[code_vulnerabilitie]}</span>
+                    </div>
+                `
+                }
 
-        try {
-            requestAPI = await fetch('/scanreal', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(bodyData)
-            })
-            response = await requestAPI.json()
-
-            console.log(response);
-
-            isLoading(false)
-
-            tableDiv.innerHTML = 'Deu bom'
-        } catch (error) {
-            console.log(error);
-            isLoading(false)
-
-            divError = document.getElementById('errorSpace')
-            divError.innerHTML = "<h1>Erro</h1>"
+            } else {
+                vulnerabilitiesHTML = "<h3>Vulnerabilidade não encontrada</h3>"
+            }
         }
 
-    })
+        return resultHTML + vulnerabilitiesHTML
+    }
 
     function isLoading(option) {
         loadingDiv = document.getElementById('loading')
@@ -118,6 +126,58 @@
             loadingDiv.style.display = 'none'
         }
     }
+
+    btn = document.getElementById("submit")
+    btn.addEventListener('click', async () => {
+        isLoading(true)
+
+        inspect_type = document.querySelector('input[name="option"]:checked').value
+        interface_selcted = document.getElementById("interface").value
+
+        bodyData = {'inspect_type': inspect_type, 'interface_selcted': interface_selcted}
+        tableDiv = document.getElementById('tabela')
+
+        let mock_API = '/scan_mock'
+        let real_API = '/scanreal'
+        try {
+            requestAPI = await fetch(real_API, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(bodyData)
+            })
+
+            response = await requestAPI.json()
+
+            nodes = response.scan_returned.results.nodes
+            descriptions = response.description_dict
+
+            if ('erro' in response) {
+                alert(response.erro)
+            }
+
+            isLoading(false)
+
+            for (let i = 0; i < nodes.length; i++) {
+                htmlContent = formatToHTML(nodes[i], descriptions)
+                tableDiv.innerHTML += `
+                    <div class="card">
+                        ${htmlContent}
+                    </div>
+
+                `
+            }
+
+            tableDiv.style.display = "block"
+
+        } catch (error) {
+            console.log('dentro do catch, erro: ', error);
+            isLoading(false)
+
+            divError = document.getElementById('errorSpace')
+            divError.innerHTML = "<h1>Erro</h1>"
+        }
+
+    })
 
 </script>
 
