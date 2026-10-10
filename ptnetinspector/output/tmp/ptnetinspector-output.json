@@ -1,0 +1,15 @@
+{
+    "satid": "",
+    "guid": "",
+    "status": "finished",
+    "message": "",
+    "results": {
+        "nodes": [],
+        "properties": {},
+        "vulnerabilities": [
+            {
+                "vulnCode": "PTV-NET-NET-MISCONF-8021X"
+            }
+        ]
+    }
+}

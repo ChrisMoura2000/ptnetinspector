@@ -1,0 +1,7 @@
+ptnetinspector network intelligence
+
+Multicast querier
+MAC                IP            Protocol    QRV    QQIC
+-----------------  ------------  ----------  -----  ------
+84:0b:bb:3c:b9:88  192.168.15.1  IGMPv2
+

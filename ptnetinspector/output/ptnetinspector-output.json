@@ -1,0 +1,11 @@
+{
+    "satid": "",
+    "guid": "",
+    "status": "error",
+    "message": "Invalid inserted interface: enp.",
+    "results": {
+        "nodes": [],
+        "properties": {},
+        "vulnerabilities": []
+    }
+}
