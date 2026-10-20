@@ -1,184 +1,352 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <link rel="stylesheet" href="../static/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document-TCC</title>
+    <title>PTNetInspector - Inspeção de rede</title>
+
+    <link rel="stylesheet" href="../static/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 5%;
+        }
+
+        .card {
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.43);
+            border-radius: 5px;
+            padding: 12px;
+            margin: 12px 0;
+            overflow-wrap: anywhere;
+        }
+
+        select, button {
+            font-family: inherit;
+            font-size: inherit;
+            margin: 5px;
+            padding: 7px;
+        }
+
+        #loading {
+            display: none;
+            margin: 20px auto;
+            border: 6px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 6px solid #3498db;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        #errorSpace {
+            color: #a00000;
+        }
+
+        #results {
+            margin-top: 25px;
+        }
+
+        #download-pdf {
+            display: none;
+        }
+
+        .field {
+            margin: 5px 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-<style>
-    /*UNICO TRECHO DE CODIGO COPIADO DA INTERNET FOI ESSA TAG STYLE #loading*/
-    body {
-        font-family: Arial, sans-serif;
-    }
-
-    .form {
-        text-align: center;
-        margin-top: 5%;
-    }
-
-    .card {
-        text-align: left;
-        border: 1px solid rgba(0, 0, 0, 0.43)
-    }
-
-    select {
-        font-family: inherit;
-        font-size: inherit;
-    }
-
-    /* Estilo do Spinner de Loading */
-    #loading {
-        display: none;
-        /* Escondido por padrão */
-        margin: 20px auto;
-        border: 6px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 6px solid #3498db;
-        width: 50px;
-        height: 50px;
-        animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-</style>
 
 <body>
-    <h1>Selecione o tipo de scan</h1>
+    <h1>Inspeção de rede</h1>
+
+    <h2>Selecione o tipo de scan</h2>
+
     <label>
-        <input type="radio" name="option" value="p">Passivo</input>
+        <input type="radio" name="option" value="p">
+        Passivo
     </label>
+
     <label>
-        <input type="radio" name="option" value="a">Active</input>
+        <input type="radio" name="option" value="a">Ativo</input>
     </label>
+
     <label>
-        <input type="radio" name="option" value="a+">Agressive</input>
+        <input type="radio" name="option" value="a+">Agressivo</input>
     </label>
+
+    <!-- /* Já que não estamos mexendo com ele, podemos deletar essa opção? */ -->
     <label>
         <input type="radio" name="option" value="802.1x">802.1x</input>
     </label>
-    <select id="interface" name="interface">
-        <option value="">Selecione a Interface de Rede</option>
-        {% for interface in interfaces %}
-        # Aparentemente, não dá para quebrar a linha em um texto dentro do option. Maioria dos fóruns recomendam usar o title. 
-        <option value="{{ interface.name }}" title="IPv4: {{ interface.ipv4 or 'N/A' }} | IPv6: {{ interface.ipv6 or 'N/A' }}">
-            {{ interface.idif }}. {{ interface.name }}
-        </option>
-        {% endfor %}
-    </select>
-    <button id="submit">Enviar</button>
+
+    <p>
+        <select id="interface" name="interface">
+            <option value="">Selecione a interface de rede</option>
+
+            {% for interface in interfaces %}
+            <option
+                value="{{ interface.name }}"
+                title="IPv4: {{ interface.ipv4 or 'N/A' }} | IPv6: {{ interface.ipv6 or 'N/A' }}">
+                {{ interface.idif }}. {{ interface.name }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <button id="submit" type="button">Executar scan</button>
+    </p>
 
     <div id="loading"></div>
-    <div id="errorSpace"></div>
+    <div id="errorSpace" role="alert"></div>
     <div id="tabela" style="display:none"></div>
 
-</body>
-<script>
+    <div id="results" style="display: none;">
+        <h2>Resultados do scan</h2>
+        <div id="scanInfo"></div>
+        <div id="networkProperties"></div>
+        <div id="devices"></div>
+        <div id="vulnerabilities"></div>
 
-    function formatToHTML(item, desc) {
-        let resultHTML = `<h2>${item.type}</h2>`
-        let vulnerabilitiesHTML = ''
-        let properties_key = Object.keys(item.properties)
-        let properties_values = Object.values(item.properties)
+        <button id="download-pdf" type="button">
+            Baixar relatório em PDF
+        </button>
+    </div>
 
-        for (let i = 0; i < properties_key.length; i++) {
-            vulnerabilitiesHTML = '<h3>Vulnerabilidades</h3>'
-            resultHTML += `            
-            <div>
-                <span>${properties_key[i]}: </span>
-                <span>${properties_values[i]}</span>
-            </div>
-                `
-            if (item.vulnerabilities.length > 0) {
-                for (let iVuln = 0; iVuln < item.vulnerabilities.length; iVuln++) {
-                    code_vulnerabilitie = item.vulnerabilities[iVuln]["vulnCode"]
-                    vulnerabilitiesHTML += `
-                <div>
-                    <span>Code: ${code_vulnerabilitie}</span>
-                    <br>
-                    <span>Descricao: ${desc[code_vulnerabilitie]}</span>
-                    </div>
-                `
+    <script>
+        let reportData = null;
+
+        const submitButton = document.getElementById("submit");
+        const downloadButton = document.getElementById("download-pdf");
+        const loading = document.getElementById("loading");
+        const errorSpace = document.getElementById("errorSpace");
+        const resultsDiv = document.getElementById("results");
+
+        function addTextElement(parent, tag, text, className = "") {
+            const element = document.createElement(tag);
+            element.textContent = text ?? "";
+            if (className) element.className = className;
+            parent.appendChild(element);
+            return element;
+        }
+
+        function addField(parent, label, value) {
+            const row = document.createElement("div");
+            row.className = "field";
+
+            const labelElement = document.createElement("strong");
+            labelElement.textContent = label + ": ";
+            row.appendChild(labelElement);
+
+            const valueElement = document.createElement("span");
+            valueElement.textContent =
+                value !== null && typeof value === "object"
+                    ? JSON.stringify(value)
+                    : String(value ?? "N/A");
+
+            row.appendChild(valueElement);
+            parent.appendChild(row);
+        }
+
+        function renderReport(report) {
+            document.getElementById("scanInfo").replaceChildren();
+            document.getElementById("networkProperties").replaceChildren();
+            document.getElementById("devices").replaceChildren();
+            document.getElementById("vulnerabilities").replaceChildren();
+
+            const scanInfo = document.getElementById("scanInfo");
+            addTextElement(scanInfo, "h3", "Informações do scan");
+            addField(scanInfo, "Comando", report.command);
+            addField(scanInfo, "Status", report.status);
+
+            if (report.message) {
+                addField(scanInfo, "Mensagem", report.message);
+            }
+
+            const networkDiv = document.getElementById("networkProperties");
+            addTextElement(networkDiv, "h3", "Propriedades da rede");
+
+            const networkProperties = report.network_properties || {};
+            for (const [key, value] of Object.entries(networkProperties)) {
+                addField(networkDiv, key, value);
+            }
+
+            const devicesDiv = document.getElementById("devices");
+            addTextElement(devicesDiv, "h3", "Dispositivos identificados");
+
+            for (const device of report.devices || []) {
+                const card = document.createElement("div");
+                card.className = "card";
+
+                addTextElement(
+                    card,
+                    "h4",
+                    device.properties?.name || "Dispositivo"
+                );
+
+                for (const [key, value] of Object.entries(device.properties || {})) {
+                    addField(card, key, value);
                 }
 
-            } else {
-                vulnerabilitiesHTML = "<h3>Vulnerabilidade não encontrada</h3>"
-            }
-        }
+                const addresses = device.addresses || [];
+                if (addresses.length) {
+                    addTextElement(card, "strong", "Endereços associados");
 
-        return resultHTML + vulnerabilitiesHTML
-    }
+                    for (const address of addresses) {
+                        addField(
+                            card,
+                            address.properties?.protocol || "Endereço",
+                            address.properties?.IP || "IP desconhecido"
+                        );
+                    }
+                }
 
-    function isLoading(option) {
-        loadingDiv = document.getElementById('loading')
-        if (option) {
-            loadingDiv.style.display = 'block'
-        } else {
-            loadingDiv.style.display = 'none'
-        }
-    }
-
-    btn = document.getElementById("submit")
-    btn.addEventListener('click', async () => {
-        isLoading(true)
-
-        inspect_type = document.querySelector('input[name="option"]:checked').value
-        interface_selcted = document.getElementById("interface").value
-
-        bodyData = {'inspect_type': inspect_type, 'interface_selcted': interface_selcted}
-        tableDiv = document.getElementById('tabela')
-
-        let mock_API = '/scan_mock'
-        let real_API = '/scanreal'
-        try {
-            requestAPI = await fetch(real_API, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(bodyData)
-            })
-
-            response = await requestAPI.json()
-
-            nodes = response.scan_returned.results.nodes
-            descriptions = response.description_dict
-
-            if ('erro' in response) {
-                alert(response.erro)
+                devicesDiv.appendChild(card);
             }
 
-            isLoading(false)
+            const vulnerabilitiesDiv =
+                document.getElementById("vulnerabilities");
 
-            for (let i = 0; i < nodes.length; i++) {
-                htmlContent = formatToHTML(nodes[i], descriptions)
-                tableDiv.innerHTML += `
-                    <div class="card">
-                        ${htmlContent}
-                    </div>
+            addTextElement(
+                vulnerabilitiesDiv,
+                "h3",
+                "Vulnerabilidades identificadas"
+            );
 
-                `
+            const vulnerabilities = report.vulnerabilities || [];
+
+            if (!vulnerabilities.length) {
+                addTextElement(
+                    vulnerabilitiesDiv,
+                    "p",
+                    "Nenhuma vulnerabilidade identificada no resultado."
+                );
             }
 
-            tableDiv.style.display = "block"
+            for (const vulnerability of vulnerabilities) {
+                const card = document.createElement("div");
+                card.className = "card";
 
-        } catch (error) {
-            console.log('dentro do catch, erro: ', error);
-            isLoading(false)
+                addTextElement(card, "h4", vulnerability.code);
+                addField(card, "Descrição", vulnerability.descricao);
+                addField(card, "Correção recomendada", vulnerability.correcao);
+                addField(
+                    card,
+                    "Ativos associados",
+                    (vulnerability.assets || []).join(", ")
+                );
 
-            divError = document.getElementById('errorSpace')
-            divError.innerHTML = "<h1>Erro</h1>"
+                vulnerabilitiesDiv.appendChild(card);
+            }
+
+            resultsDiv.style.display = "block";
+            downloadButton.style.display = "inline-block";
         }
 
-    })
+        submitButton.addEventListener("click", async () => {
+            const selectedOption =
+                document.querySelector('input[name="option"]:checked');
+            const selectedInterface =
+                document.getElementById("interface").value;
 
-</script>
+            errorSpace.textContent = "";
+            resultsDiv.style.display = "none";
+            downloadButton.style.display = "none";
+            reportData = null;
 
+            if (!selectedOption) {
+                errorSpace.textContent = "Selecione o tipo de scan.";
+                return;
+            }
+
+            if (!selectedInterface) {
+                errorSpace.textContent = "Selecione uma interface de rede.";
+                return;
+            }
+
+            loading.style.display = "block";
+            submitButton.disabled = true;
+
+            try {
+                const response = await fetch("/scanreal", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        inspect_type: selectedOption.value,
+                        interface_selcted: selectedInterface
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok || data.erro) {
+                    throw new Error(data.erro || "Falha ao executar o scan.");
+                }
+
+                reportData = data.report;
+                renderReport(reportData);
+
+            } catch (error) {
+                errorSpace.textContent = error.message || "Ocorreu um erro.";
+            } finally {
+                loading.style.display = "none";
+                submitButton.disabled = false;
+            }
+        });
+
+        downloadButton.addEventListener("click", async () => {
+            if (!reportData) {
+                errorSpace.textContent = "Execute um scan antes de baixar o PDF.";
+                return;
+            }
+
+            errorSpace.textContent = "";
+            downloadButton.disabled = true;
+
+            try {
+                const response = await fetch("/download_pdf", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(reportData)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.erro || "Falha ao gerar o PDF.");
+                }
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+
+                link.href = url;
+                link.download = "relatorio_ptnetinspector.pdf";
+                document.body.appendChild(link);
+                link.click();
+                link.remove();
+
+                URL.revokeObjectURL(url);
+
+            } catch (error) {
+                errorSpace.textContent =
+                    error.message || "Não foi possível baixar o PDF.";
+            } finally {
+                downloadButton.disabled = false;
+            }
+        });
+    </script>
+</body>
 </html>

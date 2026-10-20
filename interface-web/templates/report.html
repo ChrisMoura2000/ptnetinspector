@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Relatório - PTNetInspector</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            color: #222;
+        }
+
+        h1, h2, h3 {
+            color: #174a70;
+        }
+
+        h1 {
+            border-bottom: 2px solid #174a70;
+            padding-bottom: 8px;
+        }
+
+        section {
+            margin-bottom: 22px;
+        }
+
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .field {
+            margin: 4px 0;
+            overflow-wrap: anywhere;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    </style>
+</head>
+<body>
+    <h1>Relatório de inspeção de rede</h1>
+
+    <section>
+        <h2>Informações do scan</h2>
+        <p><span class="label">Comando:</span> {{ report.command }}</p>
+        <p><span class="label">Status:</span> {{ report.status }}</p>
+
+        {% if report.message %}
+        <p><span class="label">Mensagem:</span> {{ report.message }}</p>
+        {% endif %}
+    </section>
+
+    <section>
+        <h2>Propriedades da rede</h2>
+
+        {% for key, value in report.network_properties.items() %}
+        <div class="field">
+            <span class="label">{{ key }}:</span>
+            {% if value is mapping or (value is sequence and value is not string) %}
+                <pre>{{ value | tojson(indent=2) }}</pre>
+            {% else %}
+                {{ value }}
+            {% endif %}
+        </div>
+        {% else %}
+        <p>Nenhuma propriedade de rede encontrada.</p>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Dispositivos identificados</h2>
+
+        {% for device in report.devices %}
+        <div class="item">
+            <h3>{{ device.properties.get("name", "Dispositivo") }}</h3>
+
+            {% for key, value in device.properties.items() %}
+            <div class="field">
+                <span class="label">{{ key }}:</span> {{ value }}
+            </div>
+            {% endfor %}
+
+            {% if device.addresses %}
+            <p class="label">Endereços associados</p>
+            <ul>
+                {% for address in device.addresses %}
+                <li>
+                    {{ address.properties.get("IP", "IP desconhecido") }}
+                    ({{ address.properties.get("protocol", "Protocolo desconhecido") }})
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        {% else %}
+        <p>Nenhum dispositivo identificado.</p>
+        {% endfor %}
+    </section>
+
+    <section>
+        <h2>Vulnerabilidades identificadas</h2>
+
+        {% for vulnerability in report.vulnerabilities %}
+        <div class="item">
+            <h3>{{ vulnerability.code }}</h3>
+
+            <p>
+                <span class="label">Descrição:</span>
+                {{ vulnerability.descricao }}
+            </p>
+
+            <p>
+                <span class="label">Correção recomendada:</span>
+                {{ vulnerability.correcao }}
+            </p>
+
+            <p><span class="label">Ativos associados:</span></p>
+            <ul>
+                {% for asset in vulnerability.assets %}
+                <li>{{ asset }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% else %}
+        <p>Nenhuma vulnerabilidade identificada no resultado.</p>
+        {% endfor %}
+    </section>
+</body>
+</html>
