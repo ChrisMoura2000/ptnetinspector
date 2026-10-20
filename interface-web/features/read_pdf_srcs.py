@@ -116,7 +116,7 @@ def prepare_report_data(scan_json):
         )
 
     return {
-        "command": scan_data.get("comando_chris_usou", "-"),
+        "command": scan_data.get("command", "-"),
         "status": scan_data.get("status", "-"),
         "message": scan_data.get("message", ""),
         "network_properties": results.get("properties", {}),

@@ -75,6 +75,7 @@ def scan_real():
             }), 500
 
         raw_report_data = json.loads(response_cli.stdout)
+        raw_report_data.update({"command": " ".join(comand_cli)})
         arr_report_data = prepare_report_data(raw_report_data)
 
         # O jsonify() converte o dicionário em uma resposta HTTP no formato JSON
