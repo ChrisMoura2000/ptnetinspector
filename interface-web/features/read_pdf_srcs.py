@@ -3,7 +3,6 @@ from pathlib import Path
 
 from weasyprint import HTML
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 DESCRIPTION_FILE = (
     BASE_DIR / "auxiliares" / "code_description_remediation.json"
