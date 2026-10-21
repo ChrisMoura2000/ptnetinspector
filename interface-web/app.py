@@ -44,7 +44,6 @@ def scan_real():
     data_request = request.get_json()
 
     comand_cli = [
-        "sudo",
         str(PTNETINSPECTOR),
         "-t",
         data_request["inspect_type"],

@@ -17,7 +17,7 @@ all:
 	echo 'PYTHONPATH="$(PYTHONPATH)"' > .env
 
 .venv:
-	python3.12 -m venv $(VIRTUALENV)
+	python3 -m venv $(VIRTUALENV)
 	pip install --upgrade pip
 
 install: .venv .env
@@ -31,5 +31,4 @@ ptnetinspector: install activate
 	pip install -e .
 
 interface: activate
-	python3 interface-web/app.py
-
+	sudo env "PATH=$(PATH)" python3 interface-web/app.py
