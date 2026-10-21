@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PTNetInspector - Inspeção de rede</title>
 
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -85,10 +85,11 @@
         <input type="radio" name="option" value="a+">Agressivo</input>
     </label>
 
-    <!-- /* Já que não estamos mexendo com ele, podemos deletar essa opção? */ -->
+    <!-- Já que não estamos mexendo com ele, podemos deletar essa opção? 
     <label>
         <input type="radio" name="option" value="802.1x">802.1x</input>
     </label>
+    -->
 
     <p>
         <select id="interface" name="interface">
