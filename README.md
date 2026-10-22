@@ -31,7 +31,6 @@ sudo apt install python3 python3-venv -y
 ``` 
 
 After cloning the repository, install the package and dependencies with one command:
-
 ```bash
 make ptnetinspector
 ```
@@ -42,13 +41,6 @@ Simply activate the created virtual environment, run application and Flask serve
 ```bash 
 make interface
 ``` 
-
-## ptnetinspector man
-This tool has 4 primary modes (802.1x, passive, active, aggressive). Some of these modes can be combined to perform a more complex task. The tool must be run under the <span style="color:red;">**root**</span> user in Linux (```sudo```). The meaning of every mode and parameters are explained below.
-
-```
-ptnetinspector -t 802.1x/a/a+/p -i eth0 -j -less
-```
 
 ### General Options
 
@@ -71,19 +63,19 @@ The following options are applicable to all scan modes:
 | `-rdns` | Reverse-resolves every discovered address (PTR in `ip6.arpa` / `in-addr.arpa`) against the DNS servers found on the link via RA/RDNSS or DHCPv6. Off by default: it is the only probe that sends traffic off-link. |
 | `-h`    | Displays help message and exits. |
 
-### Specific Options for Passive Scanning
+#### Specific Options for Passive Scanning
 
 | Option  | Description |
 |---------|-------------|
 | `-d`    | Duration of the passive scan in seconds (floating-point allowed). Default: 30 seconds. |
 
-### Specific Options for Active Scanning
+#### Specific Options for Active Scanning
 
 | Option  | Description |
 |---------|-------------|
 | `-smac` | Scanner's MAC address. Default: Taken from the interface specified by `-i`. |
 
-### Specific Options for Aggressive Scanning
+#### Specific Options for Aggressive Scanning
 
 | Option     | Description |
 |------------|-------------|
@@ -98,21 +90,7 @@ The following options are applicable to all scan modes:
 | `-dns`     | IPv6 address(es) of DNS server(s). Multiple addresses can be space-separated. Excluded if not specified. Required for FAKERADNS vulnerability testing (part of FAKERA tests). |
 | `-nofwd`   | Prevents the scanner from forwarding packets (MiTM). Forwarding is allowed by default. |
 
-## Output Files
-
-Every run writes its artifacts to the interface's output directory
-(`~/.local/share/ptnetinspector/tmp/<interface>/`):
-
-| File | Contents |
-|------|----------|
-| `ptnetinspector-output.json` | Full normalized JSON report (written with `-j`). |
-| `ptnetinspector-output.txt` | The terminal report as text. |
-| `devices.csv` / `devices.txt` | Device inventory: MAC, vendor, role, hostname and addresses, one device per row, with no findings mixed in. Useful when a segment has many devices and the per-device report becomes hard to read. |
-| `device_addresses.csv` | The same inventory flattened to one row per address, with the owning device repeated on each row. Use this one to search: `grep <address>`, or filter a family with `awk -F, '$3==6'`. |
-| `multicast_groups.csv` | Every multicast group whose traffic arrived on the scanning port, and which MAC sent it. Compared against this host's own memberships to produce the flooding-evidence section of `network-intel.txt`. |
-| `network-intel.txt` | Recon detail collected during the scan: Router Advertisement options, discovered DNS-SD services, Node Information replies, the multicast querier, DHCPv6 options, passive fingerprints and reverse-DNS results. |
-
-## What a Scan Collects
+### What a Scan Collects
 
 Beyond the vulnerability findings, a scan extracts:
 
@@ -135,92 +113,7 @@ Beyond the vulnerability findings, a scan extracts:
   snooping result is inferential and depends on switch configuration.
 - **Duplicate Address Detection** — addresses caught at the moment a host claims them.
 
-## Examples
-
-### 802.1x Mode
-Send an EAPOL-Start and wait for responses.
-```
-ptnetinspector -t 802.1x -i eth0 -j
-```
-
-### Passive Mode
-Deactivate outgoing traffic, disable IP, and sniff incoming packets.
-```
-ptnetinspector -t p -i eth0 -less
-```
-
-### Active Mode
-Test vulnerabilities with packets such as MLD, ICMPv6, LLMNR, and mDNS.
-```
-ptnetinspector -t a -i eth0 -vv
-```
-
-### Aggressive Mode
-Perform active scans while emulating a fake router. Configure additional parameters.
-```
-ptnetinspector -t a+ -i eth0 -j -da+ 35 -prefix 2001:1::/64 -smac 00:01:02:03:04:05 -sip fe80::1 -period 5
-```
-
-### Combination of Modes
-Combine 802.1x and passive scans for a complex scenario. Specify passive scan duration.
-```
-ptnetinspector -t 802.1x p -i eth0 -j -d 10
-```
-
-### Target-Specific Vulnerability Scanning
-Filter and scan only specific vulnerabilities using their Test codes. The tool will **automatically infer the appropriate scan mode(s)** and IP version(s) based on the test codes provided.
-
-Scan IPv4 multicast tests:
-```
-ptnetinspector -ts 4-MDNS 4-LLMNR -i eth0 -j
-```
-
-Test ICMPv6 OUTRANGE vulnerability (auto-infers active mode):
-```
-ptnetinspector -ts 6-OUTRANGE -i eth0
-```
-
-Test FAKERA vulnerabilities (requires DNS to be specified for FAKERADNS detection):
-```
-ptnetinspector -ts 6-FAKERA -i eth0 -dns 2001:4860:4860::8888
-```
-
-Combine multiple test codes (auto-infers mode `a`):
-```
-ptnetinspector -ts 6-MLDV1 6-OUTRANGE -i eth0 -j
-```
-
-Mixed 802.1x and other tests (auto-infers modes `[802.1x, a]`):
-```
-ptnetinspector -ts 802-1X 6-OUTRANGE 4-MULTIECHO -i eth0
-```
-
-### Reverse DNS Resolution
-Resolve discovered addresses through the resolvers found on the link. Sends unicast DNS
-off-link, so it is opt-in.
-```
-ptnetinspector -t a -i eth0 -rdns
-```
-
-### Target-Specific Device Filtering
-Filter scan results to focus on specific devices using their MAC addresses:
-
-Scan and display results for a single target device:
-```
-ptnetinspector -t a -i eth0 -target ca:01:08:2b:00:01
-```
-
-Scan and display results for multiple target devices (using repeated flag):
-```
-ptnetinspector -t a -i eth0 -target ca:01:08:2b:00:01 -target 00:0c:29:35:45:d8
-```
-
-Scan and display results for multiple target devices (using space-separated):
-```
-ptnetinspector -t a -i eth0 -target ca:01:08:2b:00:01 00:0c:29:35:45:d8
-```
-
-## License
+## Original Tool's License
 Copyright (c) 2026 Penterep Security s.r.o.
 
 ptnetinspector is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
@@ -229,33 +122,7 @@ ptnetinspector is distributed in the hope that it will be useful, but WITHOUT AN
 
 You should have received a copy of the GNU General Public License along with ptmethods. If not, see https://www.gnu.org/licenses/
 
-## Testing
-
-None of this needs root or a network.
-
-| | |
-| --- | --- |
-| `python3 -m pytest test/ -q` | The unit and regression suite. |
-| `test/testbed/testbed.sh -t a -i scan0 -vv` | Runs a real scan against a simulated four-device LAN over a veth pair, inside an unprivileged user namespace. Every firewall rule and sysctl the tool changes applies only in there, so aggressive mode can be exercised without touching the host's networking. See `test/testbed/README.md`. |
-| `python3 test/fuzz/structured.py` | Adversarial frames that lie in their own count and length fields, each with a hang guard. |
-| `python3 test/fuzz/fuzz.py -n 25000` | Byte-level mutation of a seed corpus covering every protocol parsed. |
-| `python3 test/fuzz/report_fuzz.py 400` | Hostile CSV content through every output path. |
-
-The fuzzers exit non-zero when they find a crash or a hang. Both inputs they
-cover are untrusted: one bad frame aborting the scan is a denial of service,
-and one bad byte in an artifact throws away a completed run. See
-`test/fuzz/README.md`.
-
-## Sponsor
-
-<p align="center">
-  <a href="https://www.penterep.com/">
-    <img alt="Penterep" width="300" src="https://cms.penterep.com/uploads/horizontal_penterep_logo_normal_3562db3de4.svg" />
-  </a>
-</p>
-
-
-## Disclaimer
+## Disclaimer from Penterep
 
 ```
 This program must be performed with proper authorization or Educational purpose ONLY. Do not use it without permission. 
