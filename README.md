@@ -42,54 +42,6 @@ Simply activate the created virtual environment, run application and Flask serve
 make interface
 ``` 
 
-### General Options
-
-The following options are applicable to all scan modes:
-
-| Option  | Description |
-|---------|-------------|
-| `-t`    | Type of scan (**mandatory**, can choose more than one): <br> - `802.1x`: Network test for 802.1x protocol <br> - `a`: Active mode for network scanning <br> - `a+`: Aggressive mode for network scanning <br> - `p`: Passive mode for network scanning |
-| `-i`    | Interface (**mandatory**) |
-| `-target` | Target device(s) by MAC address (space-separated or repeated). Filters output to only show results for specified MAC(s). Example: `-target ca:01:08:2b:00:01 -target 00:0c:29:35:45:d8` or `-target ca:01:08:2b:00:01 00:0c:29:35:45:d8` |
-| `-j`    | Output in JSON format. Displays only JSON output unless used with other options. Includes errors if present. |
-| `-vv` | Displays full details of the network scan. When used with `-j`, outputs detailed and JSON data. Default: Basic details are shown. |
-| `-less` | Displays minimum details of the network scan. When used with `-j`, outputs minimal and JSON data. Default: Basic details are shown. |
-| `-nc`   | Disables checking if found addresses are valid and responsive. No ARP/Neighbour-Solicitation probes are sent, and every observed address is reported instead of only the ones that answered — including neighbours on a private range outside the auto-detected subnets. Publicly routable addresses seen in transit stay excluded (they belong to hosts beyond the router, not to the device that relayed the frame); the raw view is always in `addresses_unfiltered.csv`. |
-| `-4`    | Only scan IPv4 traffic (cannot be used alone for `a+` mode). |
-| `-6`    | Only scan IPv6 traffic. |
-| *(neither `-4` nor `-6`)* | IPv6 only. Add `-4` to also scan IPv4. On an interface with no IPv6 address the scan falls back to IPv4 with a warning rather than scanning nothing. |
-| `-ts`   | Filter vulnerabilities by Test code (space-separated). Only selected tests will be scanned and reported. The tool will **automatically infer and schedule the required scan mode(s)**. Example: `-ts 4-MDNS 4-LLMNR 6-OUTRANGE` will auto-infer mode `a` (active). Mixed modes like `-ts 6-OUTRANGE 802-1X` will infer `[802.1x, a]`. |
-| `-tmpret` | Temporary file retention in seconds (default: 1800). Set a small value for quick cleanup during development. |
-| `-rdns` | Reverse-resolves every discovered address (PTR in `ip6.arpa` / `in-addr.arpa`) against the DNS servers found on the link via RA/RDNSS or DHCPv6. Off by default: it is the only probe that sends traffic off-link. |
-| `-h`    | Displays help message and exits. |
-
-#### Specific Options for Passive Scanning
-
-| Option  | Description |
-|---------|-------------|
-| `-d`    | Duration of the passive scan in seconds (floating-point allowed). Default: 30 seconds. |
-
-#### Specific Options for Active Scanning
-
-| Option  | Description |
-|---------|-------------|
-| `-smac` | Scanner's MAC address. Default: Taken from the interface specified by `-i`. |
-
-#### Specific Options for Aggressive Scanning
-
-| Option     | Description |
-|------------|-------------|
-| `-da+`     | Duration of the aggressive scan in seconds (floating-point allowed). Default: 30 seconds. |
-| `-prefix`  | Prefix advertised by the scanner. Default: `fe80::/64`. |
-| `-smac`    | Scanner's MAC address. Default: Taken from the interface specified by `-i`. |
-| `-sip`     | Scanner's IPv6 address. Default: Taken from the interface specified by `-i`. Prefers a link-local address. |
-| `-rpref`   | Router preference flag (`Reserved`, `Low`, `Medium`, `High`). Default: `High`. |
-| `-period`  | Rate of RA packet sending (1 packet per `-period` seconds, floating-point allowed). Default: `Aggressive duration / 10`. |
-| `-chl`     | Current hop limit in RA messages. Default: 0. |
-| `-mtu`     | MTU advertised on the link. Excluded if not specified. |
-| `-dns`     | IPv6 address(es) of DNS server(s). Multiple addresses can be space-separated. Excluded if not specified. Required for FAKERADNS vulnerability testing (part of FAKERA tests). |
-| `-nofwd`   | Prevents the scanner from forwarding packets (MiTM). Forwarding is allowed by default. |
-
 ### What a Scan Collects
 
 Beyond the vulnerability findings, a scan extracts:
